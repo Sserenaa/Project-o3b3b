@@ -18,4 +18,5 @@
     - As a user, I want to be able to select a plant in my garden and view all the information of the plant.
     - As a user, I want to be able to view the list of the names of the plants that have flowers in my garden.
     - As a user, I want to be able to view the list of the names of the plants that don't have flowers in my garden.
+
 An example of text with **bold** and *italic* fonts.  
