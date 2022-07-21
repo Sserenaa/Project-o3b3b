@@ -1,10 +1,11 @@
 # My Personal Project
 
-## A subtitle
+## MyLibraty Application
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+###  - What will the application do?  ###
+    
+###  - Who will use it? ###
+
+### - Why is this project of interest to you? ###
 
 An example of text with **bold** and *italic* fonts.  
