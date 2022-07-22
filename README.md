@@ -19,3 +19,4 @@
     - As a user, I want to be able to list all courses in the list my courses. 
     - As a user, I want to be able to select a course in the list of my courses and view all the information of this course.
     - As a user, I want to be able to select a course in the list of my courses and rate it on a scale of one to five (zero means that the I haven’t rate the course).
+    - As a user, I want to be able to see the number of courses in my course list.
