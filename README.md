@@ -15,7 +15,7 @@
     
 
 - User stories 
-    - As a user, I want to be able to add a course to the list my courses. //and I also can add some information of that course, for example, the course's number etc.
+    - As a user, I want to be able to add a course to the list my courses. //and I also can add some information of that course, for example, the course's name etc.
     - As a user, I want to be able to remove a course to the list my courses. (I can drop courses)
     - As a user, I want to be able to list all courses in the list my courses. 
     - As a user, I want to be able to select a course in the list of my courses and view all the information of this course.
