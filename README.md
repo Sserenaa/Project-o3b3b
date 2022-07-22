@@ -4,7 +4,7 @@
 
 - What will the application do?  
 
-    The application can creat a list of courses that users have taken before. Users also can put some information of ecah course like the the **subject code** of the course, the **course number**, the **title** of the course, the **professor's name**, the **school's name**, and the **rating of the course** (the rating on on a scale of one to five, zero means that the user haven’t rate the course).
+    The application can creat a list of courses that users have taken before. Users also can put some information of ecah course like the the **subject code** of the course, the **course number**, the **professor's name**, the **school's name**, and the **rating of the course** (the rating on on a scale of one to five, zero means that the user haven’t rate the course).
     
 - Who will use it? 
 
