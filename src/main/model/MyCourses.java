@@ -41,8 +41,8 @@ public class MyCourses {
         for (Course courseTaken: myCourses) {
             if (courseTaken.getCourseName().equals(courseName)) {
                 myCourses.remove(courseTaken);
+                return true;
             }
-            return true;
         }
         return false;
     }
