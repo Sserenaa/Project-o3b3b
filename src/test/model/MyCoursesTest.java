@@ -78,6 +78,8 @@ class MyCoursesTest {
         myCourses.addCourse(course2);
         assertEquals("Bruce", myCourses.getProfName("STAT201"));
         assertEquals("Steven", myCourses.getProfName("STAT300"));
+        assertEquals("No results found. You haven't take this course.",
+                myCourses.getProfName("CPSC210"));
 
     }
 
@@ -86,10 +88,9 @@ class MyCoursesTest {
 
         myCourses.addCourse(course1);
         myCourses.addCourse(course2);
-        myCourses.addCourse(course3);
         assertEquals(88, myCourses.getGrade("STAT201"));
         assertEquals(80, myCourses.getGrade("STAT300"));
-        assertEquals(85, myCourses.getGrade("CPSC210"));
+        assertEquals(-1, myCourses.getGrade("CPSC210"));
 
     }
 

@@ -12,14 +12,6 @@ public class Course {
         this.grade = grade;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public void setProfName(String profName) {
-        this.profName = profName;
-    }
-
     public void setGrade(double grade) {
         this.grade = grade;
     }
