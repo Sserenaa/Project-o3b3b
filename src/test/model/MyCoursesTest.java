@@ -53,6 +53,7 @@ class MyCoursesTest {
         assertEquals(0, myCourses.theNumberOfCourses());
         assertFalse(myCourses.removeCourse("STAT201"));
         assertFalse(myCourses.removeCourse("STAT300"));
+        assertFalse(myCourses.removeCourse("CPSC210"));
 
     }
 

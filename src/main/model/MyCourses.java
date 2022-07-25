@@ -41,15 +41,11 @@ public class MyCourses {
         for (Course courseTaken: myCourses) {
             if (courseTaken.getCourseName().equals(courseName)) {
                 myCourses.remove(courseTaken);
-                return true;
             }
+            return true;
         }
         return false;
     }
-
-    // public void removeCourse() {
-
-    //}
 
     // REQUIRES: myCourses is not empty???
     // EFFECTS: return all the names of courses in the myCourses list
@@ -65,15 +61,6 @@ public class MyCourses {
         return coursesName;
     }
 
-    //public String getCourseName(String courseName) {
-    //    for (Course courseTaken: myCourses) {
-    //        if (courseTaken.getCourseName() == courseName) {
-    //            return courseTaken.getCourseName();
-    //        }
-    //    }
-    //    return "No results found";
-    //}
-
     // EFFECTS: return the professor's name of the course with
     // the given courseName
     public String getProfName(String courseName) {
@@ -84,16 +71,6 @@ public class MyCourses {
         }
         return "No results found. You haven't take this course.";
     }
-
-    // REQUIRES: the course with the given courseName is in the
-    // myCourses list
-    // EFFECTS: return the school's name of the course with
-    // the given courseName
-    // public String getSchoolName(String courseName) {
-    //    return "";  // stub
-
-    //}
-
 
     // EFFECTS: if the list contains the course with given courseName,
     // return the grade of this course;
