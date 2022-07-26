@@ -23,7 +23,7 @@ public class MyCoursesApp {
 
         while (stillRun) {
             showMenu();
-            operation = input.next();
+            operation = input.next().toLowerCase();
             if (operation.equals("quit")) {
                 stillRun = false;
                 System.out.println("Goodbye! Thank you for using this app!");
@@ -67,7 +67,6 @@ public class MyCoursesApp {
             seeAverage();
         } else {
             System.out.println("Selection is not valid. Please select again.");
-            System.out.println("Hint: Change every letter to low case.");
         }
     }
 
@@ -79,7 +78,7 @@ public class MyCoursesApp {
         String courseName = input.next().toUpperCase(Locale.ROOT);
         System.out.print("Enter the professor's name of the course: ");
         String profName = input.next();
-        System.out.print("Enter the grade of the course: ");
+        System.out.print("Enter the grade of the course (on a scale of 0 to 100): ");
         double grade = input.nextDouble();
         Course courseAdd = new Course(courseName, profName, grade);
         if (myCourses.addCourse(courseAdd)) {
@@ -93,7 +92,7 @@ public class MyCoursesApp {
     // EFFECTS: remove a course
     public void removeCourse() {
         System.out.println("Enter the name of the course that you would like to remove: ");
-        String courseName = input.next();
+        String courseName = input.next().toUpperCase(Locale.ROOT);
         if (myCourses.removeCourse(courseName)) {
             System.out.println("The course is successfully removed!");
         } else {
@@ -111,7 +110,7 @@ public class MyCoursesApp {
     // EFFECTS: view the information of the course selected
     public void viewInformation() {
         System.out.println("Enter the name of the course that you would like to view: ");
-        String courseName = input.next();
+        String courseName = input.next().toUpperCase(Locale.ROOT);
         System.out.println("The Name of the course: " + courseName);
         System.out.println("The prof's name of the course: " + myCourses.getProfName(courseName));
         if (myCourses.getGrade(courseName) == -1) {
@@ -125,8 +124,8 @@ public class MyCoursesApp {
     // EFFECTS: change grade of the course selected
     public void changeGrade() {
         System.out.println("Enter the name of the course that you would like to change its grade: ");
-        String courseName = input.next();
-        System.out.println("Enter the new grade: ");
+        String courseName = input.next().toUpperCase(Locale.ROOT);
+        System.out.println("Enter the new grade (on a scale of 0 to 100): ");
         double newGrade = input.nextDouble();
         if (myCourses.changeGrade(courseName, newGrade)) {
             System.out.println("The grade of " + courseName + " is changed to " + newGrade + ".");

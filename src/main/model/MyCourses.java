@@ -11,7 +11,6 @@ public class MyCourses {
     // EFFECTS: create an empty list of courses
     public MyCourses() {
         this.myCourses = new ArrayList<>();
-        // stub
     }
 
     // MODIFIES: this
@@ -47,7 +46,6 @@ public class MyCourses {
         return false;
     }
 
-    // REQUIRES: myCourses is not empty???
     // EFFECTS: return all the names of courses in the myCourses list
     public ArrayList<String> listAllCourses() {
         ArrayList<String> coursesName = new ArrayList<>();
@@ -85,8 +83,8 @@ public class MyCourses {
         return -1;
     }
 
-    // REQUIRES: the course with the given courseName is in the
-    // myCourses list
+
+    // REQUIRES: 0 <= newGrade <= 100
     // MODIFIES: this, grade
     // EFFECTS: change the grade of the course with
     // the given courseName to the value of newGrade and return true if the course
