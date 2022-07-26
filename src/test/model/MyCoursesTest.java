@@ -43,6 +43,7 @@ class MyCoursesTest {
 
         myCourses.addCourse(course1);
         myCourses.addCourse(course2);
+        assertFalse(myCourses.removeCourse("CPSC100"));
         assertEquals(2, myCourses.theNumberOfCourses());
         assertTrue(myCourses.removeCourse("STAT201"));
         assertEquals(1, myCourses.theNumberOfCourses());
@@ -50,7 +51,7 @@ class MyCoursesTest {
         assertEquals(0, myCourses.theNumberOfCourses());
         assertFalse(myCourses.removeCourse("STAT201"));
         assertFalse(myCourses.removeCourse("STAT300"));
-        assertFalse(myCourses.removeCourse("CPSC210"));
+
 
     }
 
