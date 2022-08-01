@@ -1,9 +1,13 @@
 package model;
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-public class MyCourses {
+public class MyCourses implements Writable {
     // delete or rename this class!
 
     private ArrayList<Course> myCourses;
@@ -120,5 +124,23 @@ public class MyCourses {
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("courses", coursesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns courses in this myCourses as a JSON array
+    private JSONArray coursesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Course course : myCourses) {
+            jsonArray.put(course.toJson());
+        }
+
+        return jsonArray;
     }
 }

@@ -1,6 +1,9 @@
 package model;
 
-public class Course {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Course implements Writable {
 
     private String courseName;
     private String profName;
@@ -35,7 +38,14 @@ public class Course {
         return grade;
     }
 
-
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("course's name", courseName);
+        json.put("prof's name", profName);
+        json.put("grade", grade);
+        return json;
+    }
 
 
 }
