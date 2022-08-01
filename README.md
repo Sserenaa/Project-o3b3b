@@ -22,3 +22,5 @@
     - As a user, I want to be able to select a course in the list of my courses and I can change the grade of this course.
     - As a user, I want to be able to see the number of courses in my courses list
     - As a user, I want to be able to see the average grade of courses in my courses list.
+    - As a user, I want to be able to save my courses list to file.
+    - As a user, I want to be able to load my courses list from file.
