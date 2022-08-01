@@ -3,13 +3,15 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+// Represents a course having its name, a prof's name and the grade
 public class Course implements Writable {
 
     private String courseName;
     private String profName;
     private double grade;
 
-    // REQUIRES: 0 <= grade <= 100
+    // REQUIRES: 0 <= grade <= 100;
+    // the courseName should include a subject code and a course number
     // EFFECTS: create a new course
     public Course(String courseName, String profName, double grade) {
         this.courseName = courseName; // stub
@@ -18,6 +20,7 @@ public class Course implements Writable {
     }
 
     // REQUIRES: 0 <= grade <= 100
+    // MODIFIES: this
     // EFFECTS: set the grade of course
     public void setGrade(double grade) {
         this.grade = grade;
@@ -38,6 +41,8 @@ public class Course implements Writable {
         return grade;
     }
 
+    // MODIFIES: json
+    // EFFECTS: returns this course a JSON object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

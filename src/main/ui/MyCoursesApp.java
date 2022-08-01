@@ -2,21 +2,34 @@ package ui;
 
 import model.Course;
 import model.MyCourses;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
+// Represents the MyCourses application
 public class MyCoursesApp {
 
     private MyCourses myCourses;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private static final String JSON_STORE = "./data/myCourses.json";
 
+    // EFFECTS: constructs myCourses and runs application
     public MyCoursesApp() {
         myCourses = new MyCourses();
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runMyCourseApp();
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user input
     public void runMyCourseApp() {
         String operation = null;
         boolean stillRun = true;
@@ -34,7 +47,7 @@ public class MyCoursesApp {
         }
     }
 
-    // MODIFIES: this
+
     // EFFECTS: shows Menu of operations that the app can do to user
     public void showMenu() {
         System.out.println("Welcome to MyCourses App! Please select an operation that you would like to do: ");
@@ -45,6 +58,8 @@ public class MyCoursesApp {
         System.out.println("\tchange -> change the grade of a course");
         System.out.println("\tnumber -> see the number of courses");
         System.out.println("\taverage -> see the average of all courses");
+        System.out.println("\tsave -> save my courses list to file");
+        System.out.println("\tload -> load my courses list from file");
         System.out.println("\tquit");
     }
 
@@ -65,6 +80,10 @@ public class MyCoursesApp {
             seeNumber();
         } else if (operation.equals("average")) {
             seeAverage();
+        } else if (operation.equals("save")) {
+            saveMyCoursesList();
+        } else if (operation.equals("load")) {
+            loadMyCoursesList();
         } else {
             System.out.println("Selection is not valid. Please select again.");
         }
@@ -100,7 +119,7 @@ public class MyCoursesApp {
         }
     }
 
-    // MODIFIES: this
+
     // EFFECTS: list all names of courses
     public void listCoursesName() {
         System.out.println(myCourses.listAllCourses());
@@ -134,16 +153,37 @@ public class MyCoursesApp {
         }
     }
 
-    // MODIFIES: this
     // EFFECTS: see the number of all courses
     public void seeNumber() {
         System.out.println("The total number of courses that you've taken: " + myCourses.theNumberOfCourses());
     }
 
-    // MODIFIES: this
     // EFFECTS: see the average grade of all courses
     public void seeAverage() {
         System.out.println("The average grade of courses that you've taken: " + myCourses.averageGrade());
+    }
+
+    // EFFECTS: saves the myCourses list to file
+    private void saveMyCoursesList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(myCourses);
+            jsonWriter.close();
+            System.out.println("Saved the myCourses list to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads myCourses list from file
+    private void loadMyCoursesList() {
+        try {
+            myCourses = jsonReader.read();
+            System.out.println("Loaded myCourses list from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     public static void main(String[] args) {

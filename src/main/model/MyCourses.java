@@ -7,6 +7,7 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 
+// Represents a myCourses list having a collection of courses that the user has taken
 public class MyCourses implements Writable {
     // delete or rename this class!
 
@@ -34,6 +35,7 @@ public class MyCourses implements Writable {
         return true;
     }
 
+    // REQUIRES: the courseName should include a subject code and a course number
     // MODIFIES: this
     // EFFECTS: if there is a course (in the courses list) whose name
     // is the same as courseName, remove the course with given courseName
@@ -63,6 +65,12 @@ public class MyCourses implements Writable {
         return coursesName;
     }
 
+    // EFFECTS: return all courses in the myCourses list
+    public ArrayList<Course> getCourses() {
+        return myCourses;
+    }
+
+    // REQUIRES: the courseName should include a subject code and a course number
     // EFFECTS: return the professor's name of the course with
     // the given courseName
     public String getProfName(String courseName) {
@@ -74,6 +82,7 @@ public class MyCourses implements Writable {
         return "No results found. You haven't take this course.";
     }
 
+    // REQUIRES: the courseName should include a subject code and a course number
     // EFFECTS: if the list contains the course with given courseName,
     // return the grade of this course;
     // if the list doesn't contain the course with the given courseName,
@@ -88,7 +97,8 @@ public class MyCourses implements Writable {
     }
 
 
-    // REQUIRES: 0 <= newGrade <= 100
+    // REQUIRES: 0 <= newGrade <= 100;
+    // the courseName should include a subject code and a course number
     // MODIFIES: this, grade
     // EFFECTS: change the grade of the course with
     // the given courseName to the value of newGrade and return true if the course
@@ -126,6 +136,8 @@ public class MyCourses implements Writable {
         }
     }
 
+    // MODIFIES: json
+    // EFFECTS: returns the courses arraylist as a JSON object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -133,7 +145,8 @@ public class MyCourses implements Writable {
         return json;
     }
 
-    // EFFECTS: returns courses in this myCourses as a JSON array
+    // MODIFIES: jsonArray
+    // EFFECTS: returns courses in this myCourses list as a JSON array
     private JSONArray coursesToJson() {
         JSONArray jsonArray = new JSONArray();
 

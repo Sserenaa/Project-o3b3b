@@ -1,0 +1,17 @@
+{"courses": [
+    {
+        "course's name": "STAT300",
+        "grade": 79,
+        "prof's name": "Steven"
+    },
+    {
+        "course's name": "STAT201",
+        "grade": 88,
+        "prof's name": "Bruce"
+    },
+    {
+        "course's name": "CPSC210",
+        "grade": 80,
+        "prof's name": "Mushroom"
+    }
+]}

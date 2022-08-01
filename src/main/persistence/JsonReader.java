@@ -11,8 +11,10 @@ import model.Course;
 import model.MyCourses;
 import org.json.*;
 
+// JsonReader functionality and methods are implemented from JsonSerializationDemo linked below:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
-// Represents a reader that reads workroom from JSON data stored in file
+// Represents a reader that reads myCourses list from JSON data stored in file
 public class JsonReader {
     private String source;
 
@@ -21,7 +23,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads myCourses list from file and returns it;
     // throws IOException if an error occurs reading data from file
     public MyCourses read() throws IOException {
         String jsonData = readFile(source);
@@ -30,6 +32,7 @@ public class JsonReader {
     }
 
     // EFFECTS: reads source file as string and returns it
+    // throws IOException if an error occurs reading data as string
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
@@ -48,7 +51,7 @@ public class JsonReader {
     }
 
     // MODIFIES: myCourses
-    // EFFECTS: parses courses from JSON object and adds them to myCourses
+    // EFFECTS: parses courses from JSON object and adds them to myCourses list
     private void addCourses(MyCourses myCourses, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("courses");
         for (Object json : jsonArray) {
@@ -58,7 +61,7 @@ public class JsonReader {
     }
 
     // MODIFIES: myCourses
-    // EFFECTS: parses course from JSON object and adds it to myCourses
+    // EFFECTS: parses course from JSON object and adds it to myCourses list
     private void addCourse(MyCourses myCourses, JSONObject jsonObject) {
         String courseName = jsonObject.getString("course's name");
         String profName = jsonObject.getString("prof's name");

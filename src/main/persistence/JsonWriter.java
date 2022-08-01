@@ -2,11 +2,12 @@ package persistence;
 
 import model.MyCourses;
 import org.json.JSONObject;
-
-
 import java.io.*;
 
-// Represents a writer that writes JSON representation of myCourses to file
+// JsonWriter functionality and methods are implemented from JsonSerializationDemo linked below:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
+// Represents a writer that writes JSON representation of myCourses list to file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
@@ -25,7 +26,7 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of workroom to file
+    // EFFECTS: writes JSON representation of myCourses list to file
     public void write(MyCourses myCourses) {
         JSONObject json = myCourses.toJson();
         saveToFile(json.toString(TAB));
