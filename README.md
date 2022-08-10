@@ -27,3 +27,11 @@
 
 - References
     - JsonSerializationDemo: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    - ListDemo: https://docs.oracle.com/javase/tutorial/uiswing/examples/components/ListDemoProject/src/components/ListDemo.java
+
+- Instructions for Grader
+    - You can generate the add a course event by entering the information (course's name, prof's name, and grade) at the bottom of the app, and click the "Add Course" button.
+    - You can generate the remove a course event by entering the course's name at the bottom of the app, and click the "Remove Course" button.
+    - You can locate the "hello" image by the link: https://c.tenor.com/pvFJwncehzIAAAAC/hello-there-private-from-penguins-of-madagascar.gif
+    - You can save the state of myCourses list by click the "Save" button at the bottom of the app.
+    - You can reload the state of myCourses list by click the "Load" button at the bottom of the app.
