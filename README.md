@@ -24,3 +24,6 @@
     - As a user, I want to be able to see the average grade of courses in my courses list.
     - As a user, I want to be able to save my courses list to file.
     - As a user, I want to be able to load my courses list from file.
+
+- References
+    - JsonSerializationDemo: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
