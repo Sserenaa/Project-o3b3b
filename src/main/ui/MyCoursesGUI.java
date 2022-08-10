@@ -5,13 +5,18 @@ import model.MyCourses;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.panels.MenuPanel;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
+// Represents the graphical user interface for this application
 public class MyCoursesGUI extends JFrame implements ActionListener {
 
     private MyCourses myCourses;
@@ -19,20 +24,11 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
     private JTextField profNameField;
     private JTextField gradeField;
     private JTextField courseNameField2;
-    private JPanel listPanel;
     private MenuPanel menuPanel;
-    //private JLabel courseNameLabel1;
-    //private JLabel profNameLabel;
-    //private JLabel gradeLabel;
-    //private JLabel courseNameLabel2;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private JList list;
     private DefaultListModel listModel;
-    //private JButton addButton;
-    //private JButton removeButton;
-    //private JButton loadButton;
-    //private JButton saveButton;
 
     // EFFECTS: create a graphical user interface for the app
     public MyCoursesGUI() {
@@ -43,33 +39,34 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
         initWindow();
     }
 
-    //EFFECTS: create the initial window
+    // MODIFIES: this
+    // EFFECTS: create the initial window
     public void initWindow() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(new Dimension(800, 1200));
-        setLayout(new BorderLayout());
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setSize(new Dimension(800, 1200));
+        this.setLayout(new BorderLayout());
         displayImage();
-        repaint();
         makeListPanel();
         makeMenuPanel();
         this.setVisible(true);
-        addSuccessWindow();
-        removeSuccessWindow();
-        loadSuccessWindow();
-        saveSuccessWindow();
-        setVisible(true);
     }
 
-    //EFFECTS: display an image
+    // EFFECTS: display an image
     public void displayImage() {
         JWindow window = new JWindow();
-        window.getContentPane().add(new JLabel("Welcome to MyCourses App!",
-                new ImageIcon("hello.gif"),
-                SwingConstants.LEADING));
-        window.setBounds(500, 150, 500, 600);
+        try {
+            window.getContentPane().add(new JLabel("    Welcome to MyCourses App!",
+                    new ImageIcon(ImageIO.read(new URL("https://c.tenor.com/pvFJwncehzIAAAAC/hello-there-private-from-penguins-of-madagascar.gif"))),
+                    SwingConstants.CENTER));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        window.setBounds(350, 150, 800, 550);
         window.setVisible(true);
         try {
-            Thread.sleep(6000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -77,20 +74,19 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
         window.dispose();
     }
 
-    //EFFECTS: make the list panel
+    // MODIFIES: this
+    // EFFECTS: make the list panel
     //the methods is implemented from ListDemo linked below:
     //https://docs.oracle.com/javase/tutorial/uiswing/examples/components/ListDemoProject/src/components/ListDemo.java
     public void makeListPanel() {
         listModel = new DefaultListModel();
         list = new JList(listModel);
-        //list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        //list.setSelectedIndex(0);
-        //list.addListSelectionListener(this);
         list.setVisibleRowCount(10);
         JScrollPane listScrollPane = new JScrollPane(list);
-        add(listScrollPane, BorderLayout.CENTER);
+        this.add(listScrollPane, BorderLayout.CENTER);
     }
 
+    // MODIFIES: this
     //EFFECTS: make the menu panel
     public void makeMenuPanel() {
         menuPanel = new MenuPanel();
@@ -110,11 +106,10 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
         profNameField.addActionListener(this);
         gradeField.addActionListener(this);
         courseNameField2.addActionListener(this);
-        add(menuPanel, "South");
-
+        this.add(menuPanel, "South");
     }
 
-    //EFFECTS: the app dose certain actions when different ActionEvent happens
+    // EFFECTS: the app dose certain actions when different ActionEvent happens
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Add") && courseNameField1.getText().length() > 0
@@ -129,6 +124,7 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: add a course
     public void addCourseFunction() {
         Course course = new Course(courseNameField1.getText(),
@@ -142,6 +138,7 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: remove a course
     public void removeCourseFunction() {
         String courseName = courseNameField2.getText();
@@ -149,10 +146,11 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
             listModel.removeElement(courseNameField2.getText());
             removeSuccessWindow();
         } else {
-            courseNameField1.setText("Please try again! Hint: You may not have taken this course before.");
+            courseNameField2.setText("Please try again! Hint: You may not have taken this course before.");
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: load the myCourses list
     public void loadFunction() {
         try {
@@ -166,6 +164,7 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: save the myCourses list
     public void saveFunction() {
         try {
@@ -179,7 +178,7 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
 
     }
 
-    //EFFECTS: show the information that the course is successfully added
+    // EFFECTS: show the information that the course is successfully added
     // when addButton is pressed and the course is successfully added into myCourses list
     public void addSuccessWindow() {
         JFrame addSuccessFrame = new JFrame();
@@ -189,7 +188,7 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
         addSuccessFrame.setVisible(true);
     }
 
-    //EFFECTS: show the information that the course is successfully removed
+    // EFFECTS: show the information that the course is successfully removed
     // when removeButton is pressed and the course is successfully removed from myCourses list
     public void removeSuccessWindow() {
         JFrame removeSuccessFrame = new JFrame();
@@ -200,7 +199,7 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
 
     }
 
-    //EFFECTS: show the information that the myCourses list is successfully loaded
+    // EFFECTS: show the information that the myCourses list is successfully loaded
     // when loadButton is pressed
     public void loadSuccessWindow() {
         JFrame loadSuccessFrame = new JFrame();
@@ -211,7 +210,7 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
 
     }
 
-    //EFFECTS: show the information that the myCourses list is successfully saved
+    // EFFECTS: show the information that the myCourses list is successfully saved
     // when saveButton is pressed
     public void saveSuccessWindow() {
         JFrame saveSuccessFrame = new JFrame();

@@ -2,8 +2,6 @@ package ui.panels;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel {
     private JButton addButton;
@@ -16,17 +14,17 @@ public class MenuPanel extends JPanel {
     private JTextField profNameField;
     private JTextField gradeField;
     private JTextField courseNameField2;
-    //private static final int GAP = 10;
 
     // EFFECTS: make the menu panel
     public MenuPanel() {
         setBackground(new Color(255, 255, 255));
-        setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-        setPreferredSize(new Dimension(5, 85));
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setPreferredSize(new Dimension(20, 150));
         makeAddPanel();
         makeRemovePanel();
         loadButton();
         saveButton();
+        this.setVisible(true);
     }
 
     // MODIFIES: this
@@ -35,40 +33,37 @@ public class MenuPanel extends JPanel {
         addPanel = new JPanel();
         this.addButton = new JButton("Add Course");
         this.addButton.setActionCommand("Add");
-        //addButton.setOpaque(true);
-        //addButton.setBackground(new Color(0, 0, 0));
-        //addButton.setForeground(new Color(0, 128, 255));
         JPanel addFieldPanel = (JPanel) createAddFieldPanel();
         addPanel.add(addFieldPanel);
         addPanel.add(this.addButton);
         addPanel.setLayout(new BoxLayout(addPanel, BoxLayout.LINE_AXIS));
-        //add(this.addPanel);
+        this.add(addPanel);
     }
 
     // MODIFIES: this
     // EFFECTS: return a addFieldPanel
+    //the methods is implemented from ListDemo linked below:
+    //https://docs.oracle.com/javase/tutorial/uiswing/examples/components/ListDemoProject/src/components/ListDemo.java
     protected JComponent createAddFieldPanel() {
-        JPanel panel = new JPanel(new SpringLayout());
+        JPanel panel = new JPanel(new GridBagLayout());
         String[] labelStrings = {"Course's name: ", "Prof's name: ", "Grade(on a scale of 0 to 100): "};
         JLabel[] labels = new JLabel[labelStrings.length];
         JComponent[] fields = new JComponent[labelStrings.length];
         int fieldNum = 0;
         courseNameField1  = new JTextField();
-        courseNameField1.setColumns(20);
+        courseNameField1.setColumns(35);
         fields[fieldNum++] = courseNameField1;
         profNameField = new JTextField();
-        profNameField.setColumns(20);
+        profNameField.setColumns(15);
         fields[fieldNum++] = profNameField;
         gradeField = new JTextField();
-        gradeField.setColumns(20);
+        gradeField.setColumns(10);
         fields[fieldNum++] = gradeField;
         for (int i = 0; i < labelStrings.length; i++) {
             labels[i] = new JLabel(labelStrings[i], JLabel.TRAILING);
             labels[i].setLabelFor(fields[i]);
             panel.add(labels[i]);
             panel.add(fields[i]);
-            //JTextField tf = (JTextField)fields[i];
-            //tf.addActionListener(this);
         }
         return panel;
     }
@@ -78,35 +73,51 @@ public class MenuPanel extends JPanel {
     private void makeRemovePanel() {
         removePanel = new JPanel();
         removeButton = new JButton("Remove Course");
-        courseNameField2 = new JTextField(20);
-        //removeButton.setOpaque(true);
-        //removeButton.setBackground(new Color(0, 0, 0));
-        //removeButton.setForeground(new Color(204, 0, 0));
+        //courseNameField2 = new JTextField(25);
         removeButton.setActionCommand("Remove");
-        removePanel.add(courseNameField2);
-        removePanel.add(removeButton);
-        removePanel.setLayout(new BoxLayout(addPanel, BoxLayout.LINE_AXIS));
-        //add(this.removePanel);
+        JPanel removeFieldPanel = (JPanel) createRemoveFieldPanel();
+        removePanel.add(removeFieldPanel);
+        removeFieldPanel.add(this.removeButton);
+        removePanel.setLayout(new BoxLayout(removePanel, BoxLayout.LINE_AXIS));
+        this.add(removePanel);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: return a removeFieldPanel
+    //the methods is implemented from ListDemo linked below:
+    //https://docs.oracle.com/javase/tutorial/uiswing/examples/components/ListDemoProject/src/components/ListDemo.java
+    protected JComponent createRemoveFieldPanel() {
+        JPanel panel = new JPanel(new GridBagLayout());
+        String[] labelStrings = {"Course's name: "};
+        JLabel[] labels = new JLabel[labelStrings.length];
+        JComponent[] fields = new JComponent[labelStrings.length];
+        int fieldNum = 0;
+        courseNameField2  = new JTextField();
+        courseNameField2.setColumns(35);
+        fields[fieldNum++] = courseNameField2;
+        for (int i = 0; i < labelStrings.length; i++) {
+            labels[i] = new JLabel(labelStrings[i], JLabel.TRAILING);
+            labels[i].setLabelFor(fields[i]);
+            panel.add(labels[i]);
+            panel.add(fields[i]);
+        }
+        return panel;
     }
 
     // MODIFIES: this
     // EFFECTS: make a loadButton and add the loadButton to this panel
     private void loadButton() {
         loadButton = new JButton("Load");
-        //loadButton.setOpaque(true);
-        //comp.setForeground(new Color(0, 204, 0));
         loadButton.setActionCommand("Load");
-        //add(this.loadButton);
+        this.add(this.loadButton);
     }
 
     // MODIFIES: this
     // EFFECTS: make a saveButton and add the saveButton to this panel
     private void saveButton() {
         saveButton = new JButton("Save");
-        //saveButton.setOpaque(true);
-        //comp.setForeground(new Color(0, 204, 0));
         saveButton.setActionCommand("Save");
-        //add(this.saveButton);
+        this.add(this.saveButton);
     }
 
     //EFFECTS: get the addButton
@@ -149,8 +160,4 @@ public class MenuPanel extends JPanel {
         return this.courseNameField2;
     }
 
-    //@Override
-    //public void actionPerformed(ActionEvent e) {
-
-    //}
 }
