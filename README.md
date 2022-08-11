@@ -35,3 +35,14 @@
     - You can locate the "hello" image by the link: https://c.tenor.com/pvFJwncehzIAAAAC/hello-there-private-from-penguins-of-madagascar.gif
     - You can save the state of myCourses list by click the "Save" button at the bottom of the app.
     - You can reload the state of myCourses list by click the "Load" button at the bottom of the app.
+
+- Phase 4: Task 2
+Wed Aug 10 18:59:46 PDT 2022
+STAT201 (Bruce, 97.9) is added into myCourses list.
+Wed Aug 10 19:00:07 PDT 2022
+STAT300 (Steven, 60.3) is added into myCourses list.
+Wed Aug 10 19:00:39 PDT 2022
+CPSC210 (mushroom, 87.0) is added into myCourses list.
+Wed Aug 10 19:00:46 PDT 2022
+STAT201 is removed from myCourses list.
+
