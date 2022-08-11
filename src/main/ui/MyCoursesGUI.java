@@ -1,6 +1,8 @@
 package ui;
 
 import model.Course;
+import model.Event;
+import model.EventLog;
 import model.MyCourses;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -9,8 +11,7 @@ import ui.panels.MenuPanel;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -49,6 +50,14 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
         makeListPanel();
         makeMenuPanel();
         this.setVisible(true);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println(event.toString());
+                }
+            }
+        });
     }
 
     // EFFECTS: display an image

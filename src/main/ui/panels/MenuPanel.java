@@ -3,6 +3,7 @@ package ui.panels;
 import javax.swing.*;
 import java.awt.*;
 
+// Represents a MenuPanel
 public class MenuPanel extends JPanel {
     private JButton addButton;
     private JButton removeButton;

@@ -32,6 +32,9 @@ public class MyCourses implements Writable {
             }
         }
         myCourses.add(course);
+        EventLog.getInstance().logEvent(new Event(course.getCourseName()
+                + " (" + course.getProfName() + ", " + course.getGrade() + ")"
+                + " is added into myCourses list."));
         return true;
     }
 
@@ -46,6 +49,7 @@ public class MyCourses implements Writable {
         for (Course courseTaken: myCourses) {
             if (courseTaken.getCourseName().equals(courseName)) {
                 myCourses.remove(courseTaken);
+                EventLog.getInstance().logEvent(new Event(courseName + " is removed from myCourses list."));
                 return true;
             }
         }

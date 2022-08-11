@@ -1,12 +1,12 @@
 {"courses": [
     {
-        "course's name": "STAT201",
-        "grade": 88,
-        "prof's name": "DSJKH"
+        "course's name": "STAT300",
+        "grade": 60.3,
+        "prof's name": "Steven"
     },
     {
-        "course's name": "STAT222",
-        "grade": 98,
-        "prof's name": "XVJND"
+        "course's name": "CPSC210",
+        "grade": 87,
+        "prof's name": "mushroom"
     }
 ]}
