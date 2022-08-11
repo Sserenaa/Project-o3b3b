@@ -51,6 +51,8 @@ public class MyCoursesGUI extends JFrame implements ActionListener {
         makeMenuPanel();
         this.setVisible(true);
         this.addWindowListener(new WindowAdapter() {
+
+            // EFFECTS: print to the console all the events that have been logged since the application started
             @Override
             public void windowClosing(WindowEvent e) {
                 for (Event event : EventLog.getInstance()) {

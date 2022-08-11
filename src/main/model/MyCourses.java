@@ -24,7 +24,7 @@ public class MyCourses implements Writable {
     // the list and return false;
     // if there is not any course (in the courses list) whose name
     // is the same as the name of this course, add this course into
-    // the list and return true;
+    // the list and return true, and log the event.
     public boolean addCourse(Course course) {
         for (Course courseTaken: myCourses) {
             if (courseTaken.getCourseName().equals(course.getCourseName())) {
@@ -42,7 +42,7 @@ public class MyCourses implements Writable {
     // MODIFIES: this
     // EFFECTS: if there is a course (in the courses list) whose name
     // is the same as courseName, remove the course with given courseName
-    // from the list and return true;
+    // from the list and return true, and log the event.
     // if there is not any course (in the courses list) whose name
     // is the same as courseName, return false;
     public boolean removeCourse(String courseName) {
