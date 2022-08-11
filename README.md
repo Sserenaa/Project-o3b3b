@@ -37,20 +37,29 @@
     - You can reload the state of myCourses list by click the "Load" button at the bottom of the app.
 
 - Phase 4: Task 2
+    - Example:
 
-Wed Aug 10 18:59:46 PDT 2022
+        Wed Aug 10 18:59:46 PDT 2022
 
-STAT201 (Bruce, 97.9) is added into myCourses list.
+        STAT201 (Bruce, 97.9) is added into myCourses list.
 
-Wed Aug 10 19:00:07 PDT 2022
+        Wed Aug 10 19:00:07 PDT 2022
 
-STAT300 (Steven, 60.3) is added into myCourses list.
+        STAT300 (Steven, 60.3) is added into myCourses list.
 
-Wed Aug 10 19:00:39 PDT 2022
+        Wed Aug 10 19:00:39 PDT 2022
 
-CPSC210 (mushroom, 87.0) is added into myCourses list.
+        CPSC210 (mushroom, 87.0) is added into myCourses list.
 
-Wed Aug 10 19:00:46 PDT 2022
+        Wed Aug 10 19:00:46 PDT 2022
 
-STAT201 is removed from myCourses list.
+        STAT201 is removed from myCourses list.
+        
+    - If a user opens MyCourses App and only click the "Save" button, and then he/she quit the App, print to the console no event (no event has been logged), because there is not any course that is added or removed (events are only logged when the user add/remove a course).     
+    
+- Phase 4: Task 3
+    
+    If I had more time to work on the project, there is a refactoring that I would do to improve my design. In MenuPanel class, there are two methods, createAddFieldPanel() and createRemoveFieldPanel(), and there are two for-each loops that is used to add labels and fields to the field panels in the two methods, but the two loops are the same, which is a duplicate code. I would like to extract a method which will call the for-each loops in MenuPanel and call that method from inside createAddFieldPanel() and createRemoveFieldPanel() instead.
+
+
 
